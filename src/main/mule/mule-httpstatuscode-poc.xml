@@ -12,6 +12,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 			<http:error-response statusCode="#[vars.statuscode]" />
 		</http:listener>
 		<set-variable value="300" doc:name="Set Variable" doc:id="d6200ffe-665f-4e07-88a9-f99fa7ba0957" variableName="statuscode"/>
+		<logger level="INFO" doc:name="Logger" doc:id="73e126d2-c66e-4d0d-a4ce-05b91c50460f" />
 		<raise-error doc:name="Raise error" doc:id="f0928d7b-6755-4816-988e-8be0678319e1" type="CUSTOM:CUSTOM ERROR"/>
 	</flow>
 </mule>
