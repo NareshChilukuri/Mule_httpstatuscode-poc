@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="7d19fd7f-efa8-4579-b33b-5df4b2910f70" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="mule-httpstatuscode-pocFlow" doc:id="37b2922f-29f8-4b6a-a21b-2520c76debcc" >
+		<http:listener doc:name="Listener" doc:id="b5d57611-5f17-4499-9c00-f09c67772d4f" config-ref="HTTP_Listener_config" path="/test">
+			<http:error-response statusCode="#[vars.statuscode]" />
+		</http:listener>
+		<set-variable value="300" doc:name="Set Variable" doc:id="d6200ffe-665f-4e07-88a9-f99fa7ba0957" variableName="statuscode"/>
+		<raise-error doc:name="Raise error" doc:id="f0928d7b-6755-4816-988e-8be0678319e1" type="CUSTOM:CUSTOM ERROR"/>
+	</flow>
+</mule>
